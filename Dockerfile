@@ -3,7 +3,7 @@ FROM ubuntu:latest AS build
 WORKDIR /app
 
 # Cài đặt JDK và các công cụ cần thiết
-RUN apt-get update && apt-get install -y openjdk-17 maven
+RUN apt-get update && apt-get install -y 
 
 # Sao chép toàn bộ mã nguồn vào container
 COPY . .
