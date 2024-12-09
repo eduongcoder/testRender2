@@ -3,10 +3,14 @@ FROM ubuntu:latest AS build
 WORKDIR /app
 
 # Cài đặt JDK và các công cụ cần thiết
-RUN apt-get update && apt-get install -y 
+RUN apt-get update && apt-get install -y openjdk-17 maven
 
 # Sao chép toàn bộ mã nguồn vào container
 COPY . .
+
+# Thiết lập JAVA_HOME và PATH cho JDK
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV PATH="$JAVA_HOME/bin:$PATH"
 
 # Build ứng dụng bằng Maven Wrapper
 RUN ./mvnw clean package -DskipTests
